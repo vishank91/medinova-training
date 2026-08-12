@@ -1,0 +1,72 @@
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light mt-5 py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">
+                    {{env.SITE_NAME}}</h4>
+                <p class="mb-4" style="text-align: justify;">At {{env.SITE_NAME}}, we deliver world-class healthcare
+                    with compassion, advanced technology, and experienced specialists dedicated to your family’s
+                    well-being and lifelong health.</p>
+                <a href="{{env.SITE_MAP1}}" target="_blank" class="mb-2 d-block">
+                    <i class="bi bi-geo-alt text-primary me-3"></i>{{env.SITE_ADDRESS}}
+                </a>
+                <a href="mailto:{{env.SITE_EMAIL}}" target="_blank" class="mb-2 d-block">
+                    <i class="bi bi-envelope text-primary me-3"></i>{{env.SITE_EMAIL}}
+                </a>
+                <a href="tel:{{env.SITE_PHONE}}" target="_blank" class="mb-2 d-block">
+                    <i class="bi bi-telephone text-primary me-3"></i>{{env.SITE_PHONE}}
+                </a>
+                <a href="https://wa.me/{{env.SITE_WHATSAPP}}" target="_blank" class="mb-2 d-block">
+                    <i class="bi bi-whatsapp text-primary me-3"></i>{{env.SITE_WHATSAPP}}
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">
+                    Quick Links</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-light mb-2" routerLink="/"><i class="fa fa-angle-right me-2"></i>Home</a>
+                    <a class="text-light mb-2" routerLink="/about"><i class="fa fa-angle-right me-2"></i>About Us</a>
+                    <a class="text-light mb-2" routerLink="/service"><i class="fa fa-angle-right me-2"></i>Services</a>
+                    <a class="text-light mb-2" routerLink="/doctor"><i class="fa fa-angle-right me-2"></i>Doctors</a>
+                    <a class="text-light mb-2" routerLink="/appointment"><i
+                            class="fa fa-angle-right me-2"></i>Appointment</a>
+                    <a class="text-light mb-2" routerLink="/testimonial"><i
+                            class="fa fa-angle-right me-2"></i>Testimonial</a>
+                    <a class="text-light mb-2" routerLink="/package"><i class="fa fa-angle-right me-2"></i>Package</a>
+                    <a class="text-light mb-2" routerLink="/contactus"><i class="fa fa-angle-right me-2"></i>Contact
+                        Us</a>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">
+                    Newsletter</h4>
+
+                <p>Subscribe to {{env.SITE_NAME}} monthly newsletter for expert medical advice, wellness tips, and
+                    exclusive health insights delivered straight to your inbox. Join our community and prioritize your
+                    family’s well-being today!</p>
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control p-1 border-0" placeholder="Your Email Address">
+                        <button class="btn btn-primary">Subscribe</button>
+                    </div>
+                </form>
+                <h6 class="text-primary text-uppercase mt-4 mb-3">Follow Us</h6>
+                <div class="d-flex">
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="{{env.SITE_TWITTER}}"><i
+                            class="bi bi-twitter"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="{{env.SITE_FAECBOOK}}"><i
+                            class="bi bi-facebook"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="{{env.SITE_LINKEDIN}}"><i
+                            class="bi bi-linkedin"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="{{env.SITE_YOUTUBE}}"><i
+                            class="bi bi-youtube"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="{{env.SITE_INSTAGRAM}}"><i
+                            class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer End -->

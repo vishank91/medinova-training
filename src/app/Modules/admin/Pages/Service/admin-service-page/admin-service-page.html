@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-3">
+            <app-admin-sidebar></app-admin-sidebar>
+        </div>
+        <div class="col-md-9">
+            <h5 class="border border-1 p-2 text-center">Service
+                <a routerLink="/admin/service/create"><i class="bi bi-plus text-dark float-end"></i></a>
+            </h5>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Icon</th>
+                            <th>Short Description</th>
+                            <th>Status</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of data; track $index) {
+                        <tr>
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td><span style="font-size: 40px;" [innerHTML]="item.icon"></span></td>
+                            <td>{{item.shortDescription}}</td>
+                            <td>{{item.status?"Active":"Inactive"}}</td>
+                            <td>
+                                <a [routerLink]="['/admin/service/update']" [queryParams]="{id:item.id}"
+                                    class="btn btn-primary">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                            </td>
+                            <td><button class="btn btn-danger"><i class="bi bi-trash"></i></button></td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

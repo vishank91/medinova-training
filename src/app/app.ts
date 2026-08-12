@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { FrontModule } from './Modules/front/front-module';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, FrontModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
