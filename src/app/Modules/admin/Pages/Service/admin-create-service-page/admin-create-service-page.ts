@@ -11,12 +11,14 @@ import { Router } from '@angular/router';
 })
 
 export class AdminCreateServicePage {
+  nameError = ""
   myForm = new FormGroup({
     name: new FormControl("", Validators.required),
     icon: new FormControl("", Validators.required),
     shortDescription: new FormControl("", Validators.required),
     status: new FormControl("1"),
   })
+
   get name() {
     return this.myForm.get("name")
   }
@@ -28,16 +30,33 @@ export class AdminCreateServicePage {
   }
 
   constructor(private api: ApiCallingService, private router: Router) { }
-
   postData() {
-    let item = {
-      name: this.myForm.value.name,
-      icon: this.myForm.value.icon,
-      shortDescription: this.myForm.value.shortDescription,
-      status: this.myForm.value.status === "1" ? true : false,
-    }
-    this.api.createRecord("service", item).subscribe((response: any) => {
-      this.router.navigate(['/admin/service'])
+    this.api.getRecord("service").subscribe({
+      next: (response: any) => {
+        let item = response.find((x: any) => x.name.toLocaleLowerCase() === this.myForm.value.name?.toLocaleLowerCase())
+        if (item) {
+          this.nameError = "Service With This Name Already Exist"
+        }
+        else {
+          let item = {
+            name: this.myForm.value.name,
+            icon: this.myForm.value.icon,
+            shortDescription: this.myForm.value.shortDescription,
+            status: this.myForm.value.status === "1" ? true : false,
+          }
+          this.api.createRecord("service", item).subscribe({
+            next: (response: any) => {
+              this.router.navigate(['/admin/service'])
+            },
+            error: (error) => {
+              this.nameError = error
+            }
+          })
+        }
+      },
+      error: (error) => {
+        this.nameError = "Internal Server Error"
+      }
     })
   }
 }

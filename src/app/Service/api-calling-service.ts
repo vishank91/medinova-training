@@ -32,6 +32,12 @@ export class ApiCallingService {
         })
     }
 
+    getRecordById(collection: any, data: any) {
+        return this.http.get(`${this.env.SITE_BACKEND_SERVER}/${collection}/${data.id}`, {
+            headers: this.header1
+        })
+    }
+
     updateRecord(collection: any, data: any) {
         return this.http.put(`${this.env.SITE_BACKEND_SERVER}/${collection}/${data.id}`, data, {
             headers: this.header1

@@ -14,10 +14,14 @@
                     <div class="col-12 mb-3">
                         <label>Name*</label>
                         <input type="text" name="name" formControlName="name" placeholder="Service Name"
-                            class="form-control" [ngClass]="name?.touched && name?.invalid?'border-danger':''">
+                            class="form-control"
+                            [ngClass]="name?.touched && name?.invalid && nameError?'border-danger':''">
 
                         @if (name?.invalid && name?.touched) {
                         <p class="text-danger">Name Field is Mendatory</p>
+                        }
+                        @if (nameError) {
+                        <p class="text-danger">{{nameError}}</p>
                         }
                     </div>
 

@@ -1,1 +1,99 @@
-<p>admin-create-package-page works!</p>
+<app-navbar></app-navbar>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-3">
+            <app-admin-sidebar></app-admin-sidebar>
+        </div>
+        <div class="col-md-9">
+            <h5 class="border border-1 p-2 text-center">Create Package
+                <a routerLink="/admin/package"><i class="bi bi-arrow-left text-dark float-end"></i></a>
+            </h5>
+            <form [formGroup]="myForm" (submit)="postData()">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label>Name*</label>
+                        <input type="text" name="name" formControlName="name" placeholder="Package Name"
+                            class="form-control"
+                            [ngClass]="name?.touched && name?.invalid && nameError?'border-danger':''">
+
+                        @if (name?.invalid && name?.touched) {
+                        <p class="text-danger">Name Field is Mendatory</p>
+                        }
+                        @if (nameError) {
+                        <p class="text-danger">{{nameError}}</p>
+                        }
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Base Price*</label>
+                        <input type="number" name="basePrice" formControlName="basePrice"
+                            placeholder="Package Base Price" class="form-control"
+                            [ngClass]="basePrice?.touched && basePrice?.invalid && nameError?'border-danger':''">
+
+                        @if (basePrice?.invalid && basePrice?.touched) {
+                        <p class="text-danger">Base Price Field is Mendatory</p>
+                        }
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Discount*</label>
+                        <input type="number" name="discount" formControlName="discount" placeholder="Package Discount"
+                            class="form-control"
+                            [ngClass]="discount?.touched && discount?.invalid && nameError?'border-danger':''">
+
+                        @if (discount?.invalid && discount?.touched) {
+                        <p class="text-danger">Discount Field is Mendatory</p>
+                        }
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label>Short Description*</label>
+                        <textarea name="shortDescription" formControlName="shortDescription"
+                            placeholder="Package Short Description" rows="5" class="form-control"
+                            [ngClass]="shortDescription?.touched && shortDescription?.invalid?'border-danger':''">
+                            </textarea>
+
+                        @if (shortDescription?.invalid && shortDescription?.touched) {
+                        <p class="text-danger">Short Description Field is Mendatory</p>
+                        }
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Pic*</label>
+                        <input type="file" name="pic" (change)="getInputImage($event)" class="form-control"
+                            [ngClass]="pic?.touched && pic?.invalid?'border-danger':''">
+
+                        @if (pic?.invalid && pic?.touched) {
+                        @if (pic?.getError("required")) {
+                        <p class="text-danger">Pic Field is Mendatory</p>
+                        }
+                        @else if (pic?.getError("invalidType")) {
+                        <p class="text-danger">Please Upload a Pic of type .jpg,.jpeg,.png,.gif</p>
+                        }
+                        @else if (pic?.getError("invalidSize")) {
+                        <p class="text-danger">Please Upload a Pic Less then 1 MB</p>
+                        }
+                        }
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Status</label>
+                        <select name="status" formControlName="status" class="form-select">
+                            <option value="1">Active</option>
+                            <option value="0">In-active</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary w-100" [disabled]="myForm.invalid">Create</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>
