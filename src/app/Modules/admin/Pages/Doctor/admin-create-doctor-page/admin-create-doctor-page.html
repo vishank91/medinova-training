@@ -1,1 +1,118 @@
-<p>admin-create-doctor-page works!</p>
+<app-navbar></app-navbar>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-3">
+            <app-admin-sidebar></app-admin-sidebar>
+        </div>
+        <div class="col-md-9">
+            <h5 class="border border-1 p-2 text-center">Create Doctor Record
+                <a routerLink="/admin/doctor"><i class="bi bi-arrow-left text-dark float-end"></i></a>
+            </h5>
+            <form [formGroup]="myForm" (submit)="postData()">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label>Name*</label>
+                        <input type="text" name="name" formControlName="name" placeholder="Doctor Name"
+                            class="form-control"
+                            [ngClass]="name?.touched && name?.invalid && nameError?'border-danger':''">
+
+                        @if (name?.invalid && name?.touched) {
+                        <p class="text-danger">Name Field is Mendatory</p>
+                        }
+                        @if (nameError) {
+                        <p class="text-danger">{{nameError}}</p>
+                        }
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Designation*</label>
+                        <input type="text" name="designation" formControlName="designation"
+                            placeholder="Doctor Designation" class="form-control"
+                            [ngClass]="designation?.touched && designation?.invalid && nameError?'border-danger':''">
+
+                        @if (designation?.invalid && designation?.touched) {
+                        <p class="text-danger">Designation Field is Mendatory</p>
+                        }
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Pic*</label>
+                        <input type="file" name="pic" (change)="getInputImage($event)" class="form-control"
+                            [ngClass]="pic?.touched && pic?.invalid?'border-danger':''">
+
+                        @if (pic?.invalid && pic?.touched) {
+                        @if (pic?.getError("required")) {
+                        <p class="text-danger">Pic Field is Mendatory</p>
+                        }
+                        @else if (pic?.getError("invalidType")) {
+                        <p class="text-danger">Please Upload a Pic of type .jpg,.jpeg,.png,.gif</p>
+                        }
+                        @else if (pic?.getError("invalidSize")) {
+                        <p class="text-danger">Please Upload a Pic Less then 1 MB</p>
+                        }
+                        }
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label>Short Description*</label>
+                        <textarea name="shortDescription" formControlName="shortDescription"
+                            placeholder="Doctor Short Description" rows="5" class="form-control"
+                            [ngClass]="shortDescription?.touched && shortDescription?.invalid?'border-danger':''">
+                            </textarea>
+
+                        @if (shortDescription?.invalid && shortDescription?.touched) {
+                        <p class="text-danger">Short Description Field is Mendatory</p>
+                        }
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label>Facebook Profile Page URL</label>
+                        <input type="text" name="facebook" formControlName="facebook"
+                            placeholder="Facebook Profile Page Url" class="form-control">
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label>Twitter Profile Page URL</label>
+                        <input type="text" name="twitter" formControlName="twitter"
+                            placeholder="Twitter Profile Page Url" class="form-control">
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label>Instagram Profile Page URL</label>
+                        <input type="text" name="instagram" formControlName="instagram"
+                            placeholder="Instagram Profile Page Url" class="form-control">
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label>Linkedin Profile Page URL</label>
+                        <input type="text" name="linkedin" formControlName="linkedin"
+                            placeholder="Linkedin Profile Page Url" class="form-control">
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label>Youtube Profile Page URL</label>
+                        <input type="text" name="youtube" formControlName="youtube"
+                            placeholder="Youtube Profile Page Url" class="form-control">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Status</label>
+                        <select name="status" formControlName="status" class="form-select">
+                            <option value="1">Active</option>
+                            <option value="0">In-active</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary w-100" [disabled]="myForm.invalid">Create</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

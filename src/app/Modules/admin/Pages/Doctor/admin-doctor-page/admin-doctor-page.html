@@ -1,1 +1,92 @@
-<p>admin-doctor-page works!</p>
+<app-navbar></app-navbar>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-3">
+            <app-admin-sidebar></app-admin-sidebar>
+        </div>
+        <div class="col-md-9">
+            <h5 class="border border-1 p-2 text-center">Doctor
+                <a routerLink="/admin/doctor/create"><i class="bi bi-plus text-dark float-end"></i></a>
+            </h5>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Pic</th>
+                            <th>Designation</th>
+                            <th>Short Description</th>
+                            <th>Social Media Links</th>
+                            <th>Status</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of data; track $index) {
+                        <tr>
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>
+                                <a href="{{env.SITE_IMAGE_SERVER}}{{item.pic}}" target="_blank">
+                                    <img src="{{env.SITE_IMAGE_SERVER}}{{item.pic}}" height="70px" width="100px" alt="">
+                                </a>
+                            </td>
+                            <td>{{item.designation}}</td>
+                            <td>
+                                <div style="width: 300px;">
+                                    {{item.shortDescription}}
+                                </div>
+                            </td>
+                            <td>
+                                @if (item.facebook) {
+                                <a href="{{item.facebook}}" target="_blank">
+                                    <i class="bi bi-facebook"></i>
+                                </a>
+                                }
+                                @if (item.twitter) {
+                                <a href="{{item.twitter}}" target="_blank">
+                                    <i class="bi bi-twitter"></i>
+                                </a>
+                                }
+                                @if (item.linkedin) {
+                                <a href="{{item.linkedin}}" target="_blank">
+                                    <i class="bi bi-linkedin"></i>
+                                </a>
+                                }
+                                @if (item.instagram) {
+                                <a href="{{item.instagram}}" target="_blank">
+                                    <i class="bi bi-instagram"></i>
+                                </a>
+                                }
+                                @if (item.youtube) {
+                                <a href="{{item.youtube}}" target="_blank">
+                                    <i class="bi bi-youtube"></i>
+                                </a>
+                                }
+                            </td>
+                            <td>{{item.status?"Active":"Inactive"}}</td>
+                            <td>
+                                <a [routerLink]="['/admin/doctor/update']" [queryParams]="{id:item.id}"
+                                    class="btn btn-primary">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" (click)="deleteRecord(item.id)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>
