@@ -13,6 +13,9 @@ import { AdminUpdateDoctorPage } from './Pages/Doctor/admin-update-doctor-page/a
 import { AdminDepartmentPage } from './Pages/Department/admin-department-page/admin-department-page';
 import { AdminCreateDepartmentPage } from './Pages/Department/admin-create-department-page/admin-create-department-page';
 import { AdminUpdateDepartmentPage } from './Pages/Department/admin-update-department-page/admin-update-department-page';
+import { AdminUser } from './Pages/User/admin-user/admin-user';
+import { AdminCreateUser } from './Pages/User/admin-create-user/admin-create-user';
+import { AdminUpdateUser } from './Pages/User/admin-update-user/admin-update-user';
 
 const routes: Routes = [
   {
@@ -67,6 +70,18 @@ const routes: Routes = [
     path: 'department/update',
     component: AdminUpdateDepartmentPage
   },
+  {
+    path: 'user',
+    component: AdminUser
+  },
+  {
+    path: 'user/create',
+    component: AdminCreateUser
+  },
+  {
+    path: 'user/update',
+    component: AdminUpdateUser
+  }
 ];
 
 @NgModule({

@@ -18,6 +18,9 @@ import { AdminCreateDepartmentPage } from './Pages/Department/admin-create-depar
 import { AdminUpdateDepartmentPage } from './Pages/Department/admin-update-department-page/admin-update-department-page';
 import { FrontModule } from '../front/front-module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminUser } from './Pages/User/admin-user/admin-user';
+import { AdminCreateUser } from './Pages/User/admin-create-user/admin-create-user';
+import { AdminUpdateUser } from './Pages/User/admin-update-user/admin-update-user';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminDepartmentPage,
     AdminCreateDepartmentPage,
     AdminUpdateDepartmentPage,
+    AdminUser,
+    AdminCreateUser,
+    AdminUpdateUser,
   ],
   imports: [CommonModule, AdminRoutingModule, FrontModule, ReactiveFormsModule],
 })
-export class AdminModule { }
+export class AdminModule {}

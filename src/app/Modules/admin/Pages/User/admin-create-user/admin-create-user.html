@@ -1,0 +1,111 @@
+<app-navbar></app-navbar>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-3">
+            <app-admin-sidebar></app-admin-sidebar>
+        </div>
+        <div class="col-md-9">
+            <h5 class="border border-1 p-2 text-center">Create User
+                <a routerLink="/admin/user"><i class="bi bi-arrow-left text-dark float-end"></i></a>
+            </h5>
+            <form [formGroup]="myForm" (submit)="postData()">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Name*</label>
+                        <input type="text" name="name" formControlName="name" placeholder="User Name"
+                            class="form-control" [ngClass]="name?.touched && name?.invalid?'border-danger':''">
+
+                        @if (name?.invalid && name?.touched) {
+                        <p class="text-danger">Name Field is Mendatory</p>
+                        }
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Phone*</label>
+                        <input type="text" name="phone" formControlName="phone" placeholder="Phone Number"
+                            class="form-control" [ngClass]="phone?.touched && phone?.invalid?'border-danger':''">
+
+                        @if (phone?.invalid && phone?.touched) {
+                        <p class="text-danger">User Name Field is Mendatory</p>
+                        }
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Username*</label>
+                        <input type="text" name="username" formControlName="username" placeholder="Username"
+                            class="form-control"
+                            [ngClass]="(username?.touched && username?.invalid) || usernameError ?'border-danger':''">
+
+                        @if (username?.invalid && username?.touched) {
+                        <p class="text-danger">User Name Field is Mendatory</p>
+                        }
+                        @if (usernameError) {
+                        <p class="text-danger">{{usernameError}}</p>
+                        }
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label>Email*</label>
+                        <input type="text" name="email" formControlName="email" placeholder="Email Address"
+                            class="form-control"
+                            [ngClass]="(email?.touched && email?.invalid) || emailError?'border-danger':''">
+
+                        @if (email?.invalid && email?.touched) {
+                        <p class="text-danger">User Name Field is Mendatory</p>
+                        }
+                        @if (emailError) {
+                        <p class="text-danger">{{emailError}}</p>
+                        }
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Password*</label>
+                        <input type="password" name="password" formControlName="password" placeholder="Password"
+                            class="form-control"
+                            [ngClass]="(password?.touched && password?.invalid) || passwordError?'border-danger':''">
+
+                        @if (password?.invalid && password?.touched) {
+                        <p class="text-danger">User Name Field is Mendatory</p>
+                        }
+                        @if (passwordError) {
+                        <p class="text-danger">{{passwordError}}</p>
+                        }
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Confirm Password*</label>
+                        <input type="password" name="cpassword" formControlName="cpassword"
+                            placeholder="Confirm Password" class="form-control"
+                            [ngClass]="password?.touched && password?.invalid?'border-danger':''">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Role</label>
+                        <select name="role" formControlName="role" class="form-select">
+                            <option value="Admin">Admin</option>
+                            <option value="Super Admin">Super Admin</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Status</label>
+                        <select name="status" formControlName="status" class="form-select">
+                            <option value="1">Active</option>
+                            <option value="0">In-active</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary w-100" [disabled]="myForm.invalid">Create</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>
