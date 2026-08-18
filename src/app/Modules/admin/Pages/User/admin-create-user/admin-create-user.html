@@ -33,8 +33,8 @@
 
                     <div class="col-md-6 mb-3">
                         <label>Username*</label>
-                        <input type="text" name="username" formControlName="username" placeholder="Username"
-                            class="form-control"
+                        <input type="text" name="username" formControlName="username" (keyup)="resetError($event)"
+                            placeholder="Username" class="form-control"
                             [ngClass]="(username?.touched && username?.invalid) || usernameError ?'border-danger':''">
 
                         @if (username?.invalid && username?.touched) {
@@ -48,8 +48,8 @@
 
                     <div class="col-md-6 mb-3">
                         <label>Email*</label>
-                        <input type="text" name="email" formControlName="email" placeholder="Email Address"
-                            class="form-control"
+                        <input type="text" name="email" formControlName="email" (keyup)="resetError($event)"
+                            placeholder="Email Address" class="form-control"
                             [ngClass]="(email?.touched && email?.invalid) || emailError?'border-danger':''">
 
                         @if (email?.invalid && email?.touched) {
@@ -62,8 +62,8 @@
 
                     <div class="col-md-6 mb-3">
                         <label>Password*</label>
-                        <input type="password" name="password" formControlName="password" placeholder="Password"
-                            class="form-control"
+                        <input type="password" name="password" formControlName="password" (keyup)="resetError($event)"
+                            placeholder="Password" class="form-control"
                             [ngClass]="(password?.touched && password?.invalid) || passwordError?'border-danger':''">
 
                         @if (password?.invalid && password?.touched) {
@@ -76,7 +76,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label>Confirm Password*</label>
-                        <input type="password" name="cpassword" formControlName="cpassword"
+                        <input type="password" name="cpassword" formControlName="cpassword" (blur)="checkPassword()"
                             placeholder="Confirm Password" class="form-control"
                             [ngClass]="password?.touched && password?.invalid?'border-danger':''">
                     </div>

@@ -39,41 +39,56 @@ export class AdminCreateUser {
     return this.myForm.get("password")
   }
 
+  resetError(event: any) {
+    let name = event.target.name
+    if (name === "username")
+      this.usernameError = ""
+    else if (name === "email")
+      this.emailError = ""
+    else
+      this.passwordError = ""
+  }
+
+  checkPassword() {
+    if (this.myForm.value.password !== this.myForm.value.cpassword) {
+      this.passwordError = "Password and Confirm Password Doesn't Matched"
+    }
+  }
+
   constructor(private api: ApiCallingService, private router: Router) { }
   postData() {
-    this.api.getRecord("user").subscribe({
-      next: (response: any) => {
-        let item = response.find((x: any) => x.username.toLocaleLowerCase() === this.myForm.value.username?.toLocaleLowerCase() || x.email.toLocaleLowerCase() === this.myForm.value.email?.toLocaleLowerCase())
-        if (item) {
-          this.usernameError = item.username?.toLocaleLowerCase() === this.myForm.value.username?.toLocaleLowerCase() ? "User With This Username is Already Exist" : ""
-          this.emailError = item.email?.toLocaleLowerCase() === this.myForm.value.email?.toLocaleLowerCase() ? "User With This Email is Already Exist" : ""
-        }
-        else if (this.myForm.value.password !== this.myForm.value.cpassword) {
-          this.passwordError = "Password and Confirm Password Doesn't Matched"
-        }
-        else {
-          let item = {
-            name: this.myForm.value.name,
-            username: this.myForm.value.username,
-            email: this.myForm.value.email,
-            phone: this.myForm.value.phone,
-            password: this.myForm.value.password,
-            role: this.myForm.value.role,
-            status: this.myForm.value.status === "1" ? true : false,
+    if (this.passwordError === "") {
+      this.api.getRecord("user").subscribe({
+        next: (response: any) => {
+          let item = response.find((x: any) => x.username.toLocaleLowerCase() === this.myForm.value.username?.toLocaleLowerCase() || x.email.toLocaleLowerCase() === this.myForm.value.email?.toLocaleLowerCase())
+          if (item) {
+            this.usernameError = item.username?.toLocaleLowerCase() === this.myForm.value.username?.toLocaleLowerCase() ? "User With This Username is Already Exist" : ""
+            this.emailError = item.email?.toLocaleLowerCase() === this.myForm.value.email?.toLocaleLowerCase() ? "User With This Email is Already Exist" : ""
           }
-          this.api.createRecord("user", item).subscribe({
-            next: (response: any) => {
-              this.router.navigate(['/admin/user'])
-            },
-            error: (error) => {
-              this.usernameError = error
+          else {
+            let item = {
+              name: this.myForm.value.name,
+              username: this.myForm.value.username,
+              email: this.myForm.value.email,
+              phone: this.myForm.value.phone,
+              password: this.myForm.value.password,
+              role: this.myForm.value.role,
+              status: this.myForm.value.status === "1" ? true : false,
             }
-          })
+            this.api.createRecord("user", item).subscribe({
+              next: (response: any) => {
+                this.router.navigate(['/admin/user'])
+              },
+              error: (error) => {
+                this.usernameError = error
+              }
+            })
+          }
+        },
+        error: (error) => {
+          this.usernameError = "Internal Server Error"
         }
-      },
-      error: (error) => {
-        this.usernameError = "Internal Server Error"
-      }
-    })
+      })
+    }
   }
 }
