@@ -23,6 +23,8 @@ import { ErorrPage } from './Pages/erorr-page/erorr-page';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { LoginPage } from './Pages/login-page/login-page';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     Navbar,
@@ -43,8 +45,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     AppointmentPage,
     ContactUsPage,
     ErorrPage,
+    LoginPage,
   ],
-  imports: [CommonModule, FrontRoutingModule, RouterLink, RouterLinkActive, CarouselModule],
-  exports: [Navbar, Footer, ErorrPage]
+  imports: [CommonModule, FrontRoutingModule, RouterLink, RouterLinkActive, CarouselModule,ReactiveFormsModule],
+  exports: [Navbar, Footer, ErorrPage],
 })
-export class FrontModule { }
+export class FrontModule {}

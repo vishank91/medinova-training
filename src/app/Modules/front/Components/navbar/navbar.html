@@ -20,8 +20,7 @@
                         <span class="d-none d-xl-inline-block">{{env.SITE_WHATSAPP}}</span>
                     </a>
                     <!-- <span class="text-body">|</span> -->
-                    <a class="text-decoration-none text-body ms-2" href="mailto:{{env.SITE_EMAIL}}"
-                        target="_blank">
+                    <a class="text-decoration-none text-body ms-2" href="mailto:{{env.SITE_EMAIL}}" target="_blank">
                         <i class="bi bi-envelope me-2"></i>
                         <span class="d-none d-xl-inline-block">{{env.SITE_EMAIL}}</span>
                     </a>
@@ -74,18 +73,19 @@
                     <a routerLink="/package" routerLinkActive="active" class="nav-item nav-link">Package</a>
                     <a routerLink="/testimonial" routerLinkActive="active" class="nav-item nav-link">Testimonial</a>
                     <a routerLink="/contactus" routerLinkActive="active" class="nav-item nav-link">Contact</a>
-                    <a routerLink="/admin" routerLinkActive="active" class="nav-item nav-link">Admin</a>
-                    <!-- <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    @if (user.login) {
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{user.name}}</a>
                         <div class="dropdown-menu m-0">
-                            <a href="blog" class="dropdown-item">Blog Grid</a>
-                            <a href="detail" class="dropdown-item">Blog Detail</a>
-                            <a href="team" class="dropdown-item">The Team</a>
-                            <a href="testimonial" class="dropdown-item">Testimonial</a>
-                            <a href="appointment" class="dropdown-item">Appointment</a>
-                            <a href="search" class="dropdown-item">Search</a>
+                            <a routerLink="/admin" class="dropdown-item">Dashboard</a>
+                            <button (click)="logout()" class="dropdown-item">Logout</button>
                         </div>
-                    </div> -->
+                    </div>
+                    }
+                    @else {
+                    <a routerLink="/login" routerLinkActive="active" class="nav-item nav-link">Login</a>
+                    }
+
                 </div>
             </div>
         </nav>

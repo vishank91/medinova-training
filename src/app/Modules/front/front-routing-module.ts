@@ -8,6 +8,7 @@ import { TestimonialPage } from './Pages/testimonial-page/testimonial-page';
 import { PackagePage } from './Pages/package-page/package-page';
 import { ContactUsPage } from './Pages/contact-us-page/contact-us-page';
 import { DoctorPage } from './Pages/doctor-page/doctor-page';
+import { LoginPage } from './Pages/login-page/login-page';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: "doctor",
     component: DoctorPage
+  },
+  {
+    path: "login",
+    component: LoginPage
   },
 ];
 
