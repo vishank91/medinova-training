@@ -27,8 +27,10 @@
         <i class="fs-4 bi bi-envelope"></i>
         <span class="float-end">Newsletter</span>
     </a>
-    <a routerLink="/admin/user" class="list-group-item list-group-item-action">
+    @if (role==="Super Admin") {
+        <a routerLink="/admin/user" class="list-group-item list-group-item-action">
         <i class="fs-4 bi bi-people"></i>
         <span class="float-end">User</span>
     </a>
+    }
 </div>

@@ -16,70 +16,88 @@ import { AdminUpdateDepartmentPage } from './Pages/Department/admin-update-depar
 import { AdminUser } from './Pages/User/admin-user/admin-user';
 import { AdminCreateUser } from './Pages/User/admin-create-user/admin-create-user';
 import { AdminUpdateUser } from './Pages/User/admin-update-user/admin-update-user';
+import { adminGuard } from '../../RouteGuards/admin-guard';
+import { superAdminGuard } from '../../RouteGuards/super-admin-guard';
 
 const routes: Routes = [
   {
     path: '',
+    canActivate: [adminGuard],
     component: AdminHomePage
   },
   {
     path: 'service',
+    canActivate: [adminGuard],
     component: AdminServicePage
   },
   {
     path: 'service/create',
+    canActivate: [adminGuard],
     component: AdminCreateServicePage
   },
   {
     path: 'service/update',
+    canActivate: [adminGuard],
     component: AdminUpdateServicePage
   },
   {
     path: 'package',
+    canActivate: [adminGuard],
     component: AdminPackagePage
   },
   {
     path: 'package/create',
+    canActivate: [adminGuard],
     component: AdminCreatePackagePage
   },
   {
     path: 'package/update',
+    canActivate: [adminGuard],
     component: AdminUpdatePackagePage
   },
   {
     path: 'doctor',
+    canActivate: [adminGuard],
     component: AdminDoctorPage
   },
   {
     path: 'doctor/create',
+    canActivate: [adminGuard],
     component: AdminCreateDoctorPage
   },
   {
     path: 'doctor/update',
+    canActivate: [adminGuard],
     component: AdminUpdateDoctorPage
   },
   {
     path: 'department',
+    canActivate: [adminGuard],
     component: AdminDepartmentPage
   },
   {
     path: 'department/create',
+    canActivate: [adminGuard],
     component: AdminCreateDepartmentPage
   },
   {
     path: 'department/update',
+    canActivate: [adminGuard],
     component: AdminUpdateDepartmentPage
   },
   {
     path: 'user',
+    canActivate: [superAdminGuard],
     component: AdminUser
   },
   {
     path: 'user/create',
+    canActivate: [superAdminGuard],
     component: AdminCreateUser
   },
   {
     path: 'user/update',
+    canActivate: [superAdminGuard],
     component: AdminUpdateUser
   }
 ];
